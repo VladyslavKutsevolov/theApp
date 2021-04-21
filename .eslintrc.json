@@ -118,6 +118,10 @@
     "camelcase": ["warn", {"properties": "never"}],
     "prefer-destructuring": ["warn", {"object": true, "array": true}],
     "indent": "off",
-    "react/jsx-no-bind": ["warn"]
+    "react/jsx-no-bind": ["warn"],
+    "jsx-a11y/anchor-is-valid": [ "warn", {
+      "components": [ "Link" ],
+      "specialLink": [ "to" ]
+    }]
   }
 }
