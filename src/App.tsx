@@ -1,12 +1,15 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import './App.css';
+
 import Collections from './components/collections/Collections';
+import { store } from './redux/store';
 
 function App() {
   return (
-    <div>
+    <Provider store={store}>
       <Collections />
-    </div>
+    </Provider>
   );
 }
 

@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
 import CollectionsList from './CollectionsList';
 import CollectionForm from './CollectionForm';
+import { useAppDispatch } from '../../redux/hooks';
+import {
+  CollectionsStateResource,
+  createCollection
+} from '../../redux/collectionsSlice';
 
 const Collections = () => {
   const [openForm, setOpenForm] = useState(false);
+  const dispatch = useAppDispatch();
+
+  const createNewCollection = (collection: CollectionsStateResource) => {
+    dispatch(createCollection(collection));
+  };
 
   return (
     <div>
@@ -14,7 +24,11 @@ const Collections = () => {
       >
         Create Collection
       </button>
-      <CollectionForm open={openForm} setOpen={setOpenForm} />
+      <CollectionForm
+        open={openForm}
+        createCollection={createNewCollection}
+        setOpen={setOpenForm}
+      />
       <CollectionsList />
     </div>
   );

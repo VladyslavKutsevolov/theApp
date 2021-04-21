@@ -1,5 +1,14 @@
-import React, { Fragment, useRef } from 'react';
+import React, {
+  ChangeEvent,
+  FormEvent,
+  Fragment,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
 import { Dialog, Transition } from '@headlessui/react';
+import { CollectionsStateResource } from '../../redux/collectionsSlice';
+import { useAppDispatch } from '../../redux/hooks';
 
 interface RefObject<T> {
   current: T | null;
@@ -8,10 +17,34 @@ interface RefObject<T> {
 interface Props {
   open: boolean;
   setOpen: (state: boolean) => void;
+  createCollection: (collection: CollectionsStateResource) => void;
 }
 
-const CollectionForm = ({ open, setOpen }: Props) => {
+const formState: CollectionsStateResource = {
+  name: '',
+  description: ''
+};
+
+const CollectionForm = ({ open, setOpen, createCollection }: Props) => {
   const cancelButtonRef: RefObject<any> = useRef();
+  const [form, setForm] = useState(formState);
+  const dispatch = useAppDispatch();
+
+  const id = useMemo(() => Math.random() * 100, [formState.name]);
+
+  const handleChange = (e: ChangeEvent<{ name?: any; value?: string }>) => {
+    setForm({
+      ...form,
+      id,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    createCollection(form);
+    setOpen(false);
+  };
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -62,13 +95,13 @@ const CollectionForm = ({ open, setOpen }: Props) => {
                     Create new Collection
                   </Dialog.Title>
                   <div className="mt-2">
-                    <form action="#" method="POST">
+                    <form action="#" method="POST" onSubmit={onSubmit}>
                       <div className="shadow sm:rounded-md sm:overflow-hidden w-full">
                         <div className="px-1 py-3 bg-white space-y-6 sm:p-6">
                           <div className="grid grid-cols-3 gap-6">
                             <div className="col-span-3 sm:col-span-2">
                               <label
-                                htmlFor="collectionName"
+                                htmlFor="name"
                                 className="block text-sm font-medium text-gray-700"
                               >
                                 Collection Name
@@ -76,10 +109,12 @@ const CollectionForm = ({ open, setOpen }: Props) => {
                               <div className="mt-1 flex rounded-md shadow-sm">
                                 <input
                                   type="text"
-                                  name="collectionName"
-                                  id="collectionName"
+                                  name="name"
+                                  id="name"
                                   className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300 p-2"
                                   placeholder="name"
+                                  onChange={handleChange}
+                                  value={form.name}
                                 />
                               </div>
                             </div>
@@ -99,7 +134,8 @@ const CollectionForm = ({ open, setOpen }: Props) => {
                                 rows={3}
                                 className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md p-2 resize-none"
                                 placeholder="Describe the purpose of your collection"
-                                defaultValue=""
+                                onChange={handleChange}
+                                value={form.description}
                               />
                             </div>
                           </div>
@@ -111,8 +147,9 @@ const CollectionForm = ({ open, setOpen }: Props) => {
               </div>
               <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <button
-                  type="button"
+                  type="submit"
                   className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-purple-500 text-base font-medium text-white hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+                  onClick={onSubmit}
                 >
                   Create
                 </button>

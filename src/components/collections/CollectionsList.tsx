@@ -1,21 +1,10 @@
 import React, { useState } from 'react';
-
-interface Resource {
-  id: string;
-  name: string;
-  description: string;
-}
-
-const collection: Resource[] = [
-  {
-    id: '1',
-    name: 'React',
-    description: 'some Descriptions'
-  }
-];
+import { useAppSelector } from '../../redux/hooks';
+import { CollectionsStateResource } from '../../redux/collectionsSlice';
+import { RootState } from '../../redux/store';
 
 const CollectionsList = () => {
-  const [s] = useState();
+  const { collections } = useAppSelector(state => state.collections);
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -42,29 +31,29 @@ const CollectionsList = () => {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {collection.map(resource => (
-                  <tr key={resource.id}>
+                {collections.map(collection => (
+                  <tr key={collection.id}>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="ml-4">
                           <div className="text-sm font-medium text-gray-900">
-                            {resource.name}
+                            {collection.name}
                           </div>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-gray-500">
-                        {resource.description}
+                        {collection.description}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <a
-                        href="#"
+                      <button
+                        type="button"
                         className="text-indigo-600 hover:text-indigo-900"
                       >
                         View
-                      </a>
+                      </button>
                     </td>
                   </tr>
                 ))}

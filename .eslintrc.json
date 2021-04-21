@@ -10,7 +10,8 @@
     "eslint:recommended",
     "plugin:prettier/recommended",
     "airbnb",
-    "airbnb/hooks"
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -123,6 +124,12 @@
       "components": [ "Link" ],
       "specialLink": [ "to" ]
     }],
-    "arrow-body-style": 0
+    "arrow-body-style": 0,
+    "jsx-a11y/label-has-associated-control": [ 2, {
+      "labelComponents": ["CustomInputLabel"],
+      "labelAttributes": ["label"],
+      "controlComponents": ["CustomInput"],
+      "depth": 3
+    }]
   }
 }
