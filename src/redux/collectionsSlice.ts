@@ -15,13 +15,7 @@ interface CollectionState {
 }
 
 const initialState: CollectionState = {
-  collections: [
-    {
-      id: 1,
-      name: 'React',
-      description: 'Some react stuff'
-    }
-  ]
+  collections: []
 };
 
 export const collectionsSlice = createSlice({
@@ -33,10 +27,18 @@ export const collectionsSlice = createSlice({
       action: PayloadAction<CollectionsStateResource>
     ) => {
       state.collections.push(action.payload);
+    },
+    fetchCollections: (
+      state,
+      action: PayloadAction<CollectionsStateResource[]>
+    ) => {
+      state.collections = action.payload;
     }
   }
 });
 
-export const { createCollection } = collectionsSlice.actions;
+export const { createCollection, fetchCollections } = collectionsSlice.actions;
 
 export default collectionsSlice.reducer;
+
+export class fetchAllCollections {}

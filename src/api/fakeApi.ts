@@ -1,15 +1,17 @@
 import React from 'react';
+import { CollectionsStateResource } from '../redux/collectionsSlice';
 
-interface Resource {
-  id: string;
-  name: string;
-  description: string;
-}
-
-const collection: Resource[] = [
+const collection: CollectionsStateResource[] = [
   {
-    id: '1',
+    id: 1,
     name: 'React',
+    description: 'some Descriptions'
+  },
+  {
+    id: 2,
+    name: 'Vue',
     description: 'some Descriptions'
   }
 ];
+
+export const fetchAllCollections = () => collection;

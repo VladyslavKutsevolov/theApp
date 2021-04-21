@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useAppSelector } from '../../redux/hooks';
-import { CollectionsStateResource } from '../../redux/collectionsSlice';
-import { RootState } from '../../redux/store';
 
 const CollectionsList = () => {
   const { collections } = useAppSelector(state => state.collections);

@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CollectionsList from './CollectionsList';
 import CollectionForm from './CollectionForm';
 import { useAppDispatch } from '../../redux/hooks';
 import {
   CollectionsStateResource,
-  createCollection
+  createCollection,
+  fetchCollections
 } from '../../redux/collectionsSlice';
+import { fetchAllCollections } from '../../api/fakeApi';
 
 const Collections = () => {
   const [openForm, setOpenForm] = useState(false);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCollections(fetchAllCollections()));
+  }, []);
 
   const createNewCollection = (collection: CollectionsStateResource) => {
     dispatch(createCollection(collection));
