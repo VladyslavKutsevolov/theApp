@@ -122,6 +122,7 @@
     "jsx-a11y/anchor-is-valid": [ "warn", {
       "components": [ "Link" ],
       "specialLink": [ "to" ]
-    }]
+    }],
+    "arrow-body-style": 0
   }
 }
