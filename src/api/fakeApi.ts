@@ -1,15 +1,17 @@
-import { CollectionsStateResource } from '../redux/collectionsSlice';
+import { CollectionsStateResource } from '../redux/state/collectionsState';
 
 const collection: CollectionsStateResource[] = [
   {
-    id: 1,
+    id: 'adsads',
     name: 'React',
-    description: 'some Descriptions'
+    description: 'some Descriptions',
+    links: []
   },
   {
-    id: 2,
+    id: 'adsads',
     name: 'Vue',
-    description: 'some Descriptions'
+    description: 'some Descriptions',
+    links: []
   }
 ];
 

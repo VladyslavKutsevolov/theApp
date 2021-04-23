@@ -6,8 +6,10 @@ import React, {
   useRef,
   useState
 } from 'react';
+import { v4 as uuid } from 'uuid';
+
 import { Dialog, Transition } from '@headlessui/react';
-import { CollectionsStateResource } from '../../redux/collectionsSlice';
+import { CollectionsStateResource } from '../../redux/state/collectionsState';
 
 interface RefObject<T> {
   current: T | null;
@@ -21,14 +23,15 @@ interface Props {
 
 const formState: CollectionsStateResource = {
   name: '',
-  description: ''
+  description: '',
+  links: []
 };
 
 const CollectionForm = ({ open, setOpen, createCollection }: Props) => {
   const cancelButtonRef: RefObject<any> = useRef();
   const [form, setForm] = useState(formState);
 
-  const id = useMemo(() => Math.random() * 100, [formState.name]);
+  const id = uuid();
 
   const handleChange = (e: ChangeEvent<{ name?: any; value?: string }>) => {
     setForm({
