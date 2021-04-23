@@ -3,11 +3,11 @@ import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from '../redux/store';
 
-interface Store {
+interface Prop {
   children: ReactNode;
 }
 
-const StoreProvider = ({ children }: Store) => {
+const StoreProvider = ({ children }: Prop) => {
   return <Provider store={store}>{children}</Provider>;
 };
 

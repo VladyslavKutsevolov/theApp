@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import CollectionsList from './CollectionsList';
 import CollectionForm from './CollectionForm';
 import { useAppDispatch } from '../../redux/hooks';
@@ -9,7 +9,7 @@ import {
 } from '../../redux/collectionsSlice';
 import { fetchAllCollections } from '../../api/fakeApi';
 
-const Collections = () => {
+const Collections: FC = () => {
   const [openForm, setOpenForm] = useState(false);
   const dispatch = useAppDispatch();
 

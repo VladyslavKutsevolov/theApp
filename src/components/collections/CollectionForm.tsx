@@ -8,7 +8,6 @@ import React, {
 } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { CollectionsStateResource } from '../../redux/collectionsSlice';
-import { useAppDispatch } from '../../redux/hooks';
 
 interface RefObject<T> {
   current: T | null;
@@ -28,7 +27,6 @@ const formState: CollectionsStateResource = {
 const CollectionForm = ({ open, setOpen, createCollection }: Props) => {
   const cancelButtonRef: RefObject<any> = useRef();
   const [form, setForm] = useState(formState);
-  const dispatch = useAppDispatch();
 
   const id = useMemo(() => Math.random() * 100, [formState.name]);
 

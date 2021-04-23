@@ -1,4 +1,3 @@
-// import '../../../__mocks__/intersectionObserverMock';
 import { render, screen } from '../../../test-utils/testing-library';
 import Collections from '../Collections';
 import userEvent from '@testing-library/user-event';
@@ -8,7 +7,7 @@ beforeEach(() => {
   const observe = jest.fn();
   const unobserve = jest.fn();
   const disconnect = jest.fn();
-
+  //@ts-ignore
   window.IntersectionObserver = jest.fn(() => ({
     observe,
     unobserve,

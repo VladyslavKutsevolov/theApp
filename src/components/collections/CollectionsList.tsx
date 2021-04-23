@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useAppSelector } from '../../redux/hooks';
 
-const CollectionsList = () => {
+const CollectionsList: FC = () => {
   const { collections } = useAppSelector(state => state.collections);
   return (
     <div className="flex flex-col">
@@ -23,8 +23,14 @@ const CollectionsList = () => {
                   >
                     Description
                   </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Links
+                  </th>
                   <th scope="col" className="relative px-6 py-3">
-                    <span className="sr-only">View</span>
+                    <span className="sr-only">View Collection</span>
                   </th>
                 </tr>
               </thead>
@@ -45,12 +51,15 @@ const CollectionsList = () => {
                         {collection.description}
                       </div>
                     </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-500">10</div>
+                    </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <button
                         type="button"
                         className="text-indigo-600 hover:text-indigo-900"
                       >
-                        View
+                        View Collection
                       </button>
                     </td>
                   </tr>

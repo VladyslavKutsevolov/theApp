@@ -1,4 +1,3 @@
-import React from 'react';
 import { CollectionsStateResource } from '../redux/collectionsSlice';
 
 const collection: CollectionsStateResource[] = [
@@ -14,4 +13,4 @@ const collection: CollectionsStateResource[] = [
   }
 ];
 
-export const fetchAllCollections = () => collection;
+export const fetchAllCollections = (): CollectionsStateResource[] => collection;
