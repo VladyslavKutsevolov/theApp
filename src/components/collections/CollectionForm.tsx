@@ -2,7 +2,6 @@ import React, {
   ChangeEvent,
   FormEvent,
   Fragment,
-  useMemo,
   useRef,
   useState
 } from 'react';
