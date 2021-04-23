@@ -4,7 +4,8 @@ import collectionReducer from './collectionsSlice';
 
 export const store = configureStore({
   reducer: {
-    collections: collectionReducer
+    collections: collectionReducer,
+    links: collectionReducer
   },
   middleware: new MiddlewareArray().concat(logger)
 });
