@@ -11,7 +11,13 @@ const collection: CollectionsStateResource[] = [
     id: 'adsadsadsads',
     name: 'Vue',
     description: 'some Descriptions',
-    links: []
+    links: [
+      {
+        id: 'dasdfasf',
+        name: 'some link',
+        link: 'https://google.com'
+      }
+    ]
   }
 ];
 
