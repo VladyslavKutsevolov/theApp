@@ -3,10 +3,10 @@ import CollectionsList from './CollectionsList';
 import CollectionForm from './CollectionForm';
 import { useAppDispatch } from '../../redux/hooks';
 import {
-  CollectionsStateResource,
   createCollection,
   fetchCollections
 } from '../../redux/collectionsSlice';
+import { CollectionsStateResource } from '../../redux/state/collectionsState';
 import { fetchAllCollections } from '../../api/fakeApi';
 
 const Collections: FC = () => {
@@ -24,7 +24,7 @@ const Collections: FC = () => {
   return (
     <div>
       <button
-        className="m-3 p-2 border-b border-gray-200 sm:rounded-lg"
+        className="m-3 p-2 border-b border-gray-200 sm:rounded-lg bg-purple-500 text-white"
         type="button"
         onClick={() => setOpenForm(true)}
       >

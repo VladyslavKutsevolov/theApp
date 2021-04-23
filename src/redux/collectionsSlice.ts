@@ -1,18 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-export interface CollectionsStateResource {
-  id?: number;
-  name: string;
-  description: string;
-}
-
-interface CollectionState {
-  collections: CollectionsStateResource[];
-}
-
-const initialState: CollectionState = {
-  collections: []
-};
+import {
+  initialState,
+  CollectionsStateResource
+} from './state/collectionsState';
 
 export const collectionsSlice = createSlice({
   name: 'collections',
@@ -36,5 +26,3 @@ export const collectionsSlice = createSlice({
 export const { createCollection, fetchCollections } = collectionsSlice.actions;
 
 export default collectionsSlice.reducer;
-
-export class fetchAllCollections {}
