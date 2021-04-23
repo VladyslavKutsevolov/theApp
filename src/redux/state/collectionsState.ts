@@ -1,10 +1,10 @@
-import { ResourceLinksState } from './resourceLinksState';
+import { CollectionLinksState } from './collectionLinksState';
 
 export interface CollectionsStateResource {
   id?: string;
   name: string;
   description: string;
-  links: ResourceLinksState[];
+  links: CollectionLinksState[];
 }
 
 export interface CollectionState {
