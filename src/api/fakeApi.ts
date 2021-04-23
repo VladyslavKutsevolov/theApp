@@ -8,7 +8,7 @@ const collection: CollectionsStateResource[] = [
     links: []
   },
   {
-    id: 'adsads',
+    id: 'adsadsadsads',
     name: 'Vue',
     description: 'some Descriptions',
     links: []
