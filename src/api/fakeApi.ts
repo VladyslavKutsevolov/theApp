@@ -5,7 +5,13 @@ const collection: CollectionsStateResource[] = [
     id: 'adsads',
     name: 'React',
     description: 'some Descriptions',
-    links: []
+    links: [
+      {
+        id: 'dasdfasf',
+        name: 'some react link',
+        link: 'https://google.com'
+      }
+    ]
   },
   {
     id: 'adsadsadsads',
@@ -14,7 +20,7 @@ const collection: CollectionsStateResource[] = [
     links: [
       {
         id: 'dasdfasf',
-        name: 'some link',
+        name: 'some vue link',
         link: 'https://google.com'
       }
     ]
