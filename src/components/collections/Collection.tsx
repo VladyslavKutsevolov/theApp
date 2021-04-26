@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  BriefcaseIcon,
-  CheckIcon,
-  LinkIcon,
-  LocationMarkerIcon
-} from '@heroicons/react/solid';
+import { CheckIcon, LinkIcon, UserIcon } from '@heroicons/react/solid';
 
 import { CollectionsStateResource } from '../../redux/state/collectionsState';
 import CollectionDetails from './CollectionDetails';
@@ -30,18 +25,18 @@ const Collection = (props: Props) => {
           </h2>
           <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
             <div className="mt-2 flex items-center text-sm text-gray-500">
-              <BriefcaseIcon
+              <UserIcon
                 className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                 aria-hidden="true"
               />
               Created By Vlad
             </div>
             <div className="mt-2 flex items-center text-sm text-gray-500">
-              <LocationMarkerIcon
-                className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+              <LinkIcon
+                className="-ml-1 mr-2 h-5 w-5 text-gray-500"
                 aria-hidden="true"
               />
-              Links
+              Links ({collection.links.length})
             </div>
           </div>
         </div>
@@ -56,7 +51,7 @@ const Collection = (props: Props) => {
                 className="-ml-1 mr-2 h-5 w-5 text-gray-500"
                 aria-hidden="true"
               />
-              View
+              {toggleDetails ? 'Hide' : 'View'}
             </button>
           </span>
           <span className="sm:ml-3">
