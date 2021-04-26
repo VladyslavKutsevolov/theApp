@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   BriefcaseIcon,
   CheckIcon,
@@ -9,15 +9,17 @@ import {
 import { CollectionsStateResource } from '../../redux/state/collectionsState';
 import CollectionDetails from './CollectionDetails';
 
-// function classNames(...classes: string[]) {
-//   return classes.filter(Boolean).join(' ');
-// }
-
 interface Props {
   collection: CollectionsStateResource;
 }
 
 const Collection = (props: Props) => {
+  const [toggleDetails, setToggleDetails] = useState<boolean>(false);
+
+  const toggleView = () => {
+    setToggleDetails(!toggleDetails);
+  };
+
   const { collection } = props;
   return (
     <div className="border rounded-md mx-3 mb-2">
@@ -48,6 +50,7 @@ const Collection = (props: Props) => {
             <button
               type="button"
               className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              onClick={toggleView}
             >
               <LinkIcon
                 className="-ml-1 mr-2 h-5 w-5 text-gray-500"
@@ -67,7 +70,7 @@ const Collection = (props: Props) => {
           </span>
         </div>
       </div>
-      <CollectionDetails links={collection.links} />
+      <CollectionDetails open={toggleDetails} links={collection.links} />
     </div>
   );
 };
